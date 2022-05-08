@@ -42,6 +42,13 @@ async function run() {
       res.send(products);
     });
 
+    // POST an inventory item
+    app.post("/inventory", async (req, res) => {
+      const product = req.body;
+      const result = await inventoryCollection.insertOne(product);
+      res.send(result);
+    });
+
     // Get an inventory item
     app.get("/inventory/:id", async (req, res) => {
       const id = req.params.id;
@@ -58,6 +65,14 @@ async function run() {
       const newProduct = { $set: { quantity: updatedProduct.quantity } };
       const product = await inventoryCollection.updateOne(query, newProduct);
       res.send(product);
+    });
+
+    // Delete a product of inventory
+    app.delete("/inventory/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: ObjectId(id) };
+      const result = await inventoryCollection.deleteOne(query);
+      res.send(result);
     });
   } finally {
     // await client.close();

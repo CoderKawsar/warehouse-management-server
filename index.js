@@ -28,7 +28,7 @@ async function run() {
 
     // -------------------- Inventory -------------------- //
 
-    // Get all inventory item
+    // Get all inventory items
     app.get("/inventory", async (req, res) => {
       const numberOfProduct = parseInt(req.query.numberOfProduct);
       const query = {};

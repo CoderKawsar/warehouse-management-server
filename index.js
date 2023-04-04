@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("App is run");
+  res.send("App is runing");
 });
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@warehouseass11.rq0or.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
